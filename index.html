@@ -9,6 +9,8 @@
       --bg:#0f172a;
       --text:#e2e8f0;
       --accent:#0ea5e9;
+      --panel:rgba(15,23,42,.65);
+      --cap:rgba(226,232,240,.45);
     }
     *{box-sizing:border-box;}
     body{
@@ -24,11 +26,7 @@
       inset:0;
       display:flex;
       flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:2.5rem 4vw;
-      gap:1.5rem;
+      gap:1.2rem;
       opacity:0;
       pointer-events:none;
       transition:opacity .35s ease;
@@ -37,15 +35,59 @@
       opacity:1;
       pointer-events:auto;
     }
-    h1,h2{color:var(--accent);margin:0;}
-    p{max-width:950px;font-size:1.2rem;line-height:1.5;}
-    img{
-      max-width:80vw;      /* plus large */
-      max-height:55vh;     /* plus haut */
-      border-radius:1rem;
-      box-shadow:0 0 25px rgba(0,0,0,.35);
-      object-fit:cover;
+    .topbar{
+      padding:1rem 2.5rem 0.3rem;
+      font-size:1rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:rgba(226,232,240,.7);
     }
+    .content{
+      flex:1;
+      display:flex;
+      gap:1.25rem;
+      padding:0 2.5rem 2.5rem;
+    }
+    .image-wrap{
+      flex:3;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:.5rem;
+    }
+    .image-wrap img{
+      width:100%;
+      height:100%;
+      max-height:78vh;
+      border-radius:1.1rem;
+      object-fit:cover;
+      box-shadow:0 20px 35px rgba(0,0,0,.35);
+    }
+    .caption{
+      font-size:.7rem;
+      color:var(--cap);
+      text-align:left;
+      width:100%;
+    }
+    .text-box{
+      flex:2;
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.04);
+      border-radius:1.1rem;
+      padding:1.3rem 1.5rem;
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+      backdrop-filter:blur(3px);
+    }
+    h1,h2{
+      color:var(--accent);
+      margin:0;
+    }
+    h1{font-size:1.9rem;}
+    h2{font-size:1.6rem;}
+    p{line-height:1.4;font-size:1rem;}
     .nav{
       position:fixed;
       inset:0;
@@ -58,8 +100,8 @@
       pointer-events:auto;
       width:3rem;
       height:3rem;
-      border:1px solid rgba(255,255,255,.2);
-      background:rgba(15,23,42,.3);
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(15,23,42,.35);
       backdrop-filter:blur(4px);
       border-radius:9999px;
       display:grid;
@@ -70,77 +112,163 @@
       margin:1.5rem;
       transition:.2s;
     }
-    .btn:hover{background:rgba(14,165,233,.5);}
+    .btn:hover{background:rgba(14,165,233,.6);}
     .pager{
       position:fixed;
       bottom:1rem;
       left:50%;
       transform:translateX(-50%);
-      font-size:.9rem;
-      opacity:.6;
+      font-size:.85rem;
+      opacity:.7;
     }
-    @media (max-width:700px){
-      p{font-size:1rem;}
-      img{max-width:90vw;max-height:45vh;}
+    @media (max-width:950px){
+      .content{
+        flex-direction:column;
+      }
+      .image-wrap img{
+        max-height:42vh;
+      }
+      .caption{text-align:center;}
     }
   </style>
 </head>
 <body>
+  <!-- COVER SLIDE -->
+  <section class="slide active">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1rem;">
+      <h1 style="font-size:2.4rem;margin:0;color:#0ea5e9;text-align:center;">Art & Ecology</h1>
+      <h2 style="margin:0;color:#e2e8f0;text-align:center;">Olafur Eliasson – “Ice Watch”</h2>
+      <p style="opacity:.8;">Cresson Jérémy – Rougier Noah</p>
+      <p style="font-size:.9rem;opacity:.6;">English oral – 5 minutes – environmental art</p>
+    </div>
+  </section>
 
   <!-- SLIDE 1 -->
-  <section class="slide active">
-    <h1>Olafur Eliasson – “Ice Watch”</h1>
-    <p>Art and ecology: bringing melting ice into the city to make people see climate change.</p>
-    <img src="https://res.cloudinary.com/olafureliasson-net/image/private/q_auto%3Aeco%2Cc_fit%2Ch_640%2Cw_640/img/ice-watch_18018.jpg" alt="Ice Watch installation">
+  <section class="slide">
+    <div class="topbar">Art & Ecology</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://res.cloudinary.com/olafureliasson-net/image/private/q_auto%3Aeco%2Cc_fit%2Ch_640%2Cw_640/img/ice-watch_18018.jpg" alt="Ice Watch installation">
+        <div class="caption">Source: Olafur Eliasson / olafureliasson.net</div>
+      </div>
+      <div class="text-box">
+        <h1>Olafur Eliasson – “Ice Watch”</h1>
+        <p>Art and ecology: bringing melting ice into the city to make people see climate change.</p>
+        <p>This installation uses real ice from Greenland to create an emotional reaction to global warming.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 2 : PORTRAIT -->
+  <!-- SLIDE 2 : PORTRAIT (local) -->
   <section class="slide">
-  <h2>Who is he?</h2>
-  <p>Olafur Eliasson is a Danish-Icelandic contemporary artist. He mixes art, science and nature to make people feel environmental issues.</p>
-  <img src="olafur_eliasson.jpg" alt="Olafur Eliasson portrait">
-</section>
-
-  <!-- SLIDE 3 : OEUVRE DE PRES -->
-  <section class="slide">
-    <h2>The artwork: “Ice Watch”</h2>
-    <p>He placed 12 real blocks of ice from a Greenland fjord in public spaces and let them melt. People could touch and listen to the ice.</p>
-    <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch Paris close">
+    <div class="topbar">The artist</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="olafur_eliasson.jpg" alt="Olafur Eliasson portrait">
+        <div class="caption">Source: local file (portrait of Olafur Eliasson)</div>
+      </div>
+      <div class="text-box">
+        <h2>Who is he?</h2>
+        <p>Olafur Eliasson is a Danish-Icelandic contemporary artist. He mixes art, science and nature to make people feel environmental issues.</p>
+        <p>His art is often public, immersive and focused on ecology.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 4 : DANS LA VILLE -->
+  <!-- SLIDE 3 -->
   <section class="slide">
-    <h2>Where and when?</h2>
-    <p>Copenhagen (2014), Paris during COP21 (2015), London (2018). Shown in the street so everyone can see it.</p>
-    <img src="https://media.newyorker.com/photos/59097295c14b3c606c108234/master/w_2560%2Cc_limit/Zarin-Artist-Bringing-Icebergs-to-Paris.jpg" alt="Ice Watch in Paris street">
+    <div class="topbar">The artwork</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch Paris close">
+        <div class="caption">Source: Hyperallergic – “Ice Watch, Paris 2015”</div>
+      </div>
+      <div class="text-box">
+        <h2>The artwork: “Ice Watch”</h2>
+        <p>He placed 12 real blocks of ice from a Greenland fjord in public spaces and let them melt.</p>
+        <p>People could touch, listen and actually watch climate change happening in front of them.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 5 : MESSAGE -->
+  <!-- SLIDE 4 -->
   <section class="slide">
-    <h2>The message</h2>
-    <p>The melting ice is a direct symbol of global warming. Instead of numbers, people watch climate change happen in front of them.</p>
-    <img src="https://cdn.mos.cms.futurecdn.net/MZzCJtu3xEGM6grCCVFoCE.jpg" alt="People around Ice Watch">
+    <div class="topbar">Context</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://media.newyorker.com/photos/59097295c14b3c606c108234/master/w_2560%2Cc_limit/Zarin-Artist-Bringing-Icebergs-to-Paris.jpg" alt="Ice Watch in Paris street">
+        <div class="caption">Source: The New Yorker – “Bringing Icebergs to Paris”</div>
+      </div>
+      <div class="text-box">
+        <h2>Where and when?</h2>
+        <p>Copenhagen (2014), Paris during COP21 (2015), London (2018).</p>
+        <p>Shown in the street so everyone can see it, not only people in museums.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 6 : TYPE D'ART -->
- <section class="slide">
-  <h2>Type of art</h2>
-  <p>Environmental installation art: contemporary, temporary, in public space, made to provoke emotion. The art disappears – like the ice.</p>
-  <img src="/icewatch-paris.jpg" alt="Ice Watch Paris 2015">
-</section>
-
-  <!-- SLIDE 7 : IMPACT -->
+  <!-- SLIDE 5 -->
   <section class="slide">
-    <h2>Impact</h2>
-    <p>The work created media attention and public discussion. Eliasson shows art can support science and ecology.</p>
-    <img src="https://assets.yellowtrace.com.au/wp-content/uploads/2015/11/Olafur-Eliasson-Office-Studio-Berlin-Yellowtrace.jpg" alt="Olafur Eliasson Studio">
+    <div class="topbar">The message</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://cdn.mos.cms.futurecdn.net/MZzCJtu3xEGM6grCCVFoCE.jpg" alt="People around Ice Watch">
+        <div class="caption">Source: Future / TechRadar image report on Ice Watch</div>
+      </div>
+      <div class="text-box">
+        <h2>The message</h2>
+        <p>The melting ice is a direct symbol of global warming.</p>
+        <p>Instead of numbers, people watch climate change happen in front of them.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 8 : CONCLUSION -->
+  <!-- SLIDE 6 (local image) -->
   <section class="slide">
-    <h2>Conclusion</h2>
-    <p>“Ice Watch” makes climate change visible, touchable and emotional. Art here is not decoration – it is a warning.</p>
-    <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch detail">
+    <div class="topbar">Type of art</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="icewatch-paris.jpg" alt="Ice Watch Paris 2015">
+        <div class="caption">Source: local file (Wikimedia Commons – Ice Watch, Paris 2015)</div>
+      </div>
+      <div class="text-box">
+        <h2>Environmental installation art</h2>
+        <p>Contemporary, temporary, in public space, made to provoke emotion.</p>
+        <p>The art disappears – like the ice – to reinforce the ecological message.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 -->
+  <section class="slide">
+    <div class="topbar">Impact</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://assets.yellowtrace.com.au/wp-content/uploads/2015/11/Olafur-Eliasson-Office-Studio-Berlin-Yellowtrace.jpg" alt="Olafur Eliasson Studio">
+        <div class="caption">Source: Yellowtrace – Olafur Eliasson Studio, Berlin</div>
+      </div>
+      <div class="text-box">
+        <h2>Impact</h2>
+        <p>The work created media attention and public discussion.</p>
+        <p>Eliasson shows art can support science and ecology by making people care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 -->
+  <section class="slide">
+    <div class="topbar">Conclusion</div>
+    <div class="content">
+      <div class="image-wrap">
+        <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch detail">
+        <div class="caption">Source: Hyperallergic – “Ice Watch, Paris 2015”</div>
+      </div>
+      <div class="text-box">
+        <h2>Conclusion</h2>
+        <p>“Ice Watch” makes climate change visible, touchable and emotional.</p>
+        <p>Art here is not decoration – it is a warning.</p>
+      </div>
+    </div>
   </section>
 
   <div class="nav">
