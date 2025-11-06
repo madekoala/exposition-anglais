@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Olafur Eliasson – Ice Watch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --text:#e2e8f0;
+      --accent:#0ea5e9;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      height:100vh;
+      overflow:hidden;
+    }
+    .slide{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:2.5rem 4vw;
+      gap:1.5rem;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .slide.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+    h1,h2{color:var(--accent);margin:0;}
+    p{max-width:950px;font-size:1.2rem;line-height:1.5;}
+    img{
+      max-width:80vw;      /* plus large */
+      max-height:55vh;     /* plus haut */
+      border-radius:1rem;
+      box-shadow:0 0 25px rgba(0,0,0,.35);
+      object-fit:cover;
+    }
+    .nav{
+      position:fixed;
+      inset:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      pointer-events:none;
+    }
+    .btn{
+      pointer-events:auto;
+      width:3rem;
+      height:3rem;
+      border:1px solid rgba(255,255,255,.2);
+      background:rgba(15,23,42,.3);
+      backdrop-filter:blur(4px);
+      border-radius:9999px;
+      display:grid;
+      place-items:center;
+      color:white;
+      font-size:1.4rem;
+      cursor:pointer;
+      margin:1.5rem;
+      transition:.2s;
+    }
+    .btn:hover{background:rgba(14,165,233,.5);}
+    .pager{
+      position:fixed;
+      bottom:1rem;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:.9rem;
+      opacity:.6;
+    }
+    @media (max-width:700px){
+      p{font-size:1rem;}
+      img{max-width:90vw;max-height:45vh;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1 -->
+  <section class="slide active">
+    <h1>Olafur Eliasson – “Ice Watch”</h1>
+    <p>Art and ecology: bringing melting ice into the city to make people see climate change.</p>
+    <img src="https://res.cloudinary.com/olafureliasson-net/image/private/q_auto%3Aeco%2Cc_fit%2Ch_640%2Cw_640/img/ice-watch_18018.jpg" alt="Ice Watch installation">
+  </section>
+
+  <!-- SLIDE 2 : PORTRAIT -->
+  <section class="slide">
+  <h2>Who is he?</h2>
+  <p>Olafur Eliasson is a Danish-Icelandic contemporary artist. He mixes art, science and nature to make people feel environmental issues.</p>
+  <img src="olafur_eliasson.jpg" alt="Olafur Eliasson portrait">
+</section>
+
+  <!-- SLIDE 3 : OEUVRE DE PRES -->
+  <section class="slide">
+    <h2>The artwork: “Ice Watch”</h2>
+    <p>He placed 12 real blocks of ice from a Greenland fjord in public spaces and let them melt. People could touch and listen to the ice.</p>
+    <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch Paris close">
+  </section>
+
+  <!-- SLIDE 4 : DANS LA VILLE -->
+  <section class="slide">
+    <h2>Where and when?</h2>
+    <p>Copenhagen (2014), Paris during COP21 (2015), London (2018). Shown in the street so everyone can see it.</p>
+    <img src="https://media.newyorker.com/photos/59097295c14b3c606c108234/master/w_2560%2Cc_limit/Zarin-Artist-Bringing-Icebergs-to-Paris.jpg" alt="Ice Watch in Paris street">
+  </section>
+
+  <!-- SLIDE 5 : MESSAGE -->
+  <section class="slide">
+    <h2>The message</h2>
+    <p>The melting ice is a direct symbol of global warming. Instead of numbers, people watch climate change happen in front of them.</p>
+    <img src="https://cdn.mos.cms.futurecdn.net/MZzCJtu3xEGM6grCCVFoCE.jpg" alt="People around Ice Watch">
+  </section>
+
+  <!-- SLIDE 6 : TYPE D'ART -->
+ <section class="slide">
+  <h2>Type of art</h2>
+  <p>Environmental installation art: contemporary, temporary, in public space, made to provoke emotion. The art disappears – like the ice.</p>
+  <img src="/icewatch-paris.jpg" alt="Ice Watch Paris 2015">
+</section>
+
+  <!-- SLIDE 7 : IMPACT -->
+  <section class="slide">
+    <h2>Impact</h2>
+    <p>The work created media attention and public discussion. Eliasson shows art can support science and ecology.</p>
+    <img src="https://assets.yellowtrace.com.au/wp-content/uploads/2015/11/Olafur-Eliasson-Office-Studio-Berlin-Yellowtrace.jpg" alt="Olafur Eliasson Studio">
+  </section>
+
+  <!-- SLIDE 8 : CONCLUSION -->
+  <section class="slide">
+    <h2>Conclusion</h2>
+    <p>“Ice Watch” makes climate change visible, touchable and emotional. Art here is not decoration – it is a warning.</p>
+    <img src="https://i0.wp.com/hyperallergic-newspack.s3.amazonaws.com/uploads/2015/12/eliasson-ice-watch-paris-06.jpg?quality=90&resize=640%2C512" alt="Ice Watch detail">
+  </section>
+
+  <div class="nav">
+    <button class="btn" id="prev" aria-label="Previous slide">‹</button>
+    <button class="btn" id="next" aria-label="Next slide">›</button>
+  </div>
+  <div class="pager" id="pager">1 / 8</div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const pager = document.getElementById('pager');
+    let i = 0;
+
+    function show(n){
+      slides.forEach(s => s.classList.remove('active'));
+      slides[n].classList.add('active');
+      pager.textContent = (n+1) + " / " + slides.length;
+    }
+
+    prev.onclick = () => {
+      i = (i - 1 + slides.length) % slides.length;
+      show(i);
+    };
+    next.onclick = () => {
+      i = (i + 1) % slides.length;
+      show(i);
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowRight') next.click();
+      if(e.key === 'ArrowLeft') prev.click();
+    });
+  </script>
+</body>
+</html>
